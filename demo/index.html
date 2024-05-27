@@ -1,108 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Color Picker</title>
-    <meta name="description" content="A modern and performant color picker in vanilla js">
-    <meta name="robots" content="index,follow">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="theme-color" content="#ffffff">
+    <title>Color Dialog Box (Demo)</title>
     <style>
+        a,abbr,acronym,address,applet,big,blockquote,caption,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,font,form,h1,h2,h3,h4,h5,h6,html,iframe,img,ins,kbd,label,legend,li,object,ol,p,pre,q,s,samp,small,span,strike,sub,sup,tfoot,thead,tt,ul,var{border:0;font-family:inherit;font-size:100%;font-style:inherit;font-weight:inherit;margin:0;outline:0;padding:0;vertical-align:baseline}
+        article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}
+        ol,ul{list-style:none}
+        sup{font-size:smaller;line-height:0;vertical-align:super}
+        em{font-style:italic}
+        sub{font-size:smaller;vertical-align:sub}
+        button,input,textarea{outline:0}
+        *{box-sizing:border-box}
+        html{font-size:16px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+        body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;border:0;font-style:inherit;font-weight:inherit;margin:0;outline:0;padding:0;vertical-align:baseline}
+        body{
+            font-family: -apple-system, BlinkMacSystemFont, "“Segoe UI”", “Roboto”, “Oxygen”, “Ubuntu”, “Cantarell”, "“Fira Sans”", "“Droid Sans”", "“Helvetica Neue”", sans-serif;
+        }
+
+        header {
+            padding: 1rem;
+            box-shadow: 0 0 2px 0 #00000085;
+            z-index: 1;
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+                
         .background {
             --hue: 0deg;
             --saturation: 100%;
             --lightness: 50%;
             --opacity: 1;
             --hex: #000000ff;
-            /* background: hsla(var(--hue), var(--saturation), var(--lightness), var(--opacity)); */
             background: var(--hex);
             width: 100%;
-            height: 3rem;
             display: flex;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+
+            span {
+                background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXBhbGV0dGUiPjxjaXJjbGUgY3g9IjEzLjUiIGN5PSI2LjUiIHI9Ii41IiBmaWxsPSJjdXJyZW50Q29sb3IiLz48Y2lyY2xlIGN4PSIxNy41IiBjeT0iMTAuNSIgcj0iLjUiIGZpbGw9ImN1cnJlbnRDb2xvciIvPjxjaXJjbGUgY3g9IjguNSIgY3k9IjcuNSIgcj0iLjUiIGZpbGw9ImN1cnJlbnRDb2xvciIvPjxjaXJjbGUgY3g9IjYuNSIgY3k9IjEyLjUiIHI9Ii41IiBmaWxsPSJjdXJyZW50Q29sb3IiLz48cGF0aCBkPSJNMTIgMkM2LjUgMiAyIDYuNSAyIDEyczQuNSAxMCAxMCAxMGMuOTI2IDAgMS42NDgtLjc0NiAxLjY0OC0xLjY4OCAwLS40MzctLjE4LS44MzUtLjQzNy0xLjEyNS0uMjktLjI4OS0uNDM4LS42NTItLjQzOC0xLjEyNWExLjY0IDEuNjQgMCAwIDEgMS42NjgtMS42NjhoMS45OTZjMy4wNTEgMCA1LjU1NS0yLjUwMyA1LjU1NS01LjU1NEMyMS45NjUgNi4wMTIgMTcuNDYxIDIgMTIgMnoiLz48L3N2Zz4=) #ffffffde no-repeat 0.75rem center / 1rem 1rem;
+                padding: 0.75rem 0.75rem 0.75rem 2.25rem;
+                border-radius: 3px;
+                box-shadow: 0 0 0px 3px #0000001c;
+                font-weight: 500;
+                opacity: 0.75;
+            }
+
+
+            &:hover {
+                span {
+                    opacity: 1;
+                }
+            }
         }
 
-        /* color-picker::part(wrapper) {
-            color: blue;
-        } */
+        #parent {
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+        }
 
-        /* color-picker {
-            --bg-primary: red;
-        } */
+        .blocks {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            display: flex;
+            flex: 1;
+        }
+
+        @media screen and (max-width:800px){
+            .blocks {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Test de mon module</h1>
-
-    <!-- <div id="sliders">
-        <div class="slider">
-            <div>
-                <span>Hue</span>
-                <input aria-label="Hue Output" type="number" name="hue-output" min="0" max="360" step="1" value="0">
-            </div>
-            <input aria-label="Hue Slider" type="range" name="hue-range" min="0" max="360" value="0">
-        </div>
-
-
-    </div> -->
-
     <div id="parent">
-        <p class="background" data-id="1"></p>
-        <p class="background" data-id="2"></p>
-        <p class="background" data-id="3"></p>
+        <header>
+            <h1>Color Dialog Box</h1>
+            <p>A framework-agnostic color dialog box.</p>
+        </header>
 
-        <div>
-            <button value="color-picker" data-id="1">1</button>
-            <button value="color-picker" data-id="2">2</button>
-            <button value="color-picker" data-id="3">3</button>
+        <div class="blocks">
+            <div class="background" data-id="1" style="--hex:#041645;"><span>#264653ff</span></div>
+            <div class="background" data-id="2" style="--hex:#4823b3;"><span>#2a9d8fff</span></div>
+            <div class="background" data-id="3" style="--hex:#a13dee;"><span>#f7eacaff</span></div>
+            <div class="background" data-id="4" style="--hex:#ed81ef;"><span>#f4a261ff</span></div>
+            <div class="background" data-id="5" style="--hex:#fddaeb;"><span>#e76f51ff</span></div>
         </div>
     
-        <color-picker label-title="Title" label-hue="H" label-saturation="S" label-lightness="L" label-opacity="O"  label-ok="V"></color-picker> 
+        <color-picker></color-picker> 
     </div>
 
-    <dialog>Test</dialog>
+    <script type="module">
+        import 'colorpicker';
 
-    <!-- <script type="module" src="../src/index.ts"></script> -->
-    <script type="module" src="../dist/color-picker.js"></script>
-    <script>
         const parent = document.getElementById('parent');
-        // const bg = document.querySelector('#parent .background');
         const picker = document.querySelector('color-picker');
 
         const updateColor = e => {
-            // console.log(e.target.closest('color-picker'));
-            console.log(e.target.dataset.id);
-            console.log(e.detail.hex);
             const hex = e.detail.hex;
-            // const hsl = e.detail.hsl;
             const id = e.target.dataset.id ? e.target.dataset.id : 1;
 
-            // parent.querySelector(`.background[data-id="${id}"]`).style.setProperty('--hue', `${hsl.h}deg`);
-            // parent.querySelector(`.background[data-id="${id}"]`).style.setProperty('--saturation', `${hsl.s}%`);
-            // parent.querySelector(`.background[data-id="${id}"]`).style.setProperty('--lightness', `${hsl.l}%`);
             parent.querySelector(`.background[data-id="${id}"]`).style.setProperty('--hex', `${hex}`);
-            parent.querySelector(`.background[data-id="${id}"]`).innerText = hex;
-
-            // if(e.target.name === 'color-picker') {
-            //     console.log(e.detail.color);
-            // }
+            parent.querySelector(`.background[data-id="${id}"] span`).innerText = hex;
         };
 
         const openPicker = e => {
-            if(e.target.closest('button[value="color-picker"]')) {
-                const hex = parent.querySelector(`.background[data-id="${e.target.dataset.id}"]`).style.getPropertyValue('--hex');
-                // picker.open();
-                picker.setAttribute('data-id', e.target.dataset.id);
+            const bg = e.target.closest('.background');    
+            if(bg) {
+                const hex = bg.style.getPropertyValue('--hex');
+                picker.setAttribute('data-id', bg.dataset.id);
                 picker.setAttribute('hex', hex);
                 picker.setAttribute('open', true);
-
-                // picker.open();
             }
         };
 
         picker.addEventListener('update-color', updateColor);
         parent.addEventListener('click', openPicker);
-        // parent.addEventListener('input', updateColor);
     </script>
 </body>
 </html>
