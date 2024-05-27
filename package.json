@@ -6,6 +6,8 @@
         "type": "git",
         "url": "https://github.com/jmetaxas/color-dialog-box.git"
     },
+    "author": "Jessy Metaxas",
+    "license": "ISC",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "type": "module",
@@ -33,8 +35,6 @@
         "custom element",
         "customelement"
     ],
-    "author": "Jessy Metaxas",
-    "license": "ISC",
     "devDependencies": {
         "@esm-bundle/chai": "^4.3.4-fix.0",
         "@open-wc/testing-helpers": "^3.0.1",
