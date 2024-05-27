@@ -1,7 +1,7 @@
 {
     "name": "color-dialog-box",
     "version": "1.0.0",
-    "description": "A performant, modern and lightweight color dialog box in vanilla js.",
+    "description": "A modern and lightweight color dialog box in vanilla js.",
     "repository": {
         "type": "git",
         "url": "https://github.com/jmetaxas/color-dialog-box.git"
