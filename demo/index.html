@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Color Picker</title>
+    <meta name="description" content="A modern and performant color picker in vanilla js">
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+        .background {
+            --hue: 0deg;
+            --saturation: 100%;
+            --lightness: 50%;
+            --opacity: 1;
+            --hex: #000000ff;
+            /* background: hsla(var(--hue), var(--saturation), var(--lightness), var(--opacity)); */
+            background: var(--hex);
+            width: 100%;
+            height: 3rem;
+            display: flex;
+        }
+
+        /* color-picker::part(wrapper) {
+            color: blue;
+        } */
+
+        /* color-picker {
+            --bg-primary: red;
+        } */
+    </style>
+</head>
+<body>
+    <h1>Test de mon module</h1>
+
+    <!-- <div id="sliders">
+        <div class="slider">
+            <div>
+                <span>Hue</span>
+                <input aria-label="Hue Output" type="number" name="hue-output" min="0" max="360" step="1" value="0">
+            </div>
+            <input aria-label="Hue Slider" type="range" name="hue-range" min="0" max="360" value="0">
+        </div>
+
+
+    </div> -->
+
+    <div id="parent">
+        <p class="background" data-id="1"></p>
+        <p class="background" data-id="2"></p>
+        <p class="background" data-id="3"></p>
+
+        <div>
+            <button value="color-picker" data-id="1">1</button>
+            <button value="color-picker" data-id="2">2</button>
+            <button value="color-picker" data-id="3">3</button>
+        </div>
+    
+        <color-picker label-title="Title" label-hue="H" label-saturation="S" label-lightness="L" label-opacity="O"  label-ok="V"></color-picker> 
+    </div>
+
+    <dialog>Test</dialog>
+
+    <!-- <script type="module" src="../src/index.ts"></script> -->
+    <script type="module" src="../dist/color-picker.js"></script>
+    <script>
+        const parent = document.getElementById('parent');
+        // const bg = document.querySelector('#parent .background');
+        const picker = document.querySelector('color-picker');
+
+        const updateColor = e => {
+            // console.log(e.target.closest('color-picker'));
+            console.log(e.target.dataset.id);
+            console.log(e.detail.hex);
+            const hex = e.detail.hex;
+            // const hsl = e.detail.hsl;
+            const id = e.target.dataset.id ? e.target.dataset.id : 1;
+
+            // parent.querySelector(`.background[data-id="${id}"]`).style.setProperty('--hue', `${hsl.h}deg`);
+            // parent.querySelector(`.background[data-id="${id}"]`).style.setProperty('--saturation', `${hsl.s}%`);
+            // parent.querySelector(`.background[data-id="${id}"]`).style.setProperty('--lightness', `${hsl.l}%`);
+            parent.querySelector(`.background[data-id="${id}"]`).style.setProperty('--hex', `${hex}`);
+            parent.querySelector(`.background[data-id="${id}"]`).innerText = hex;
+
+            // if(e.target.name === 'color-picker') {
+            //     console.log(e.detail.color);
+            // }
+        };
+
+        const openPicker = e => {
+            if(e.target.closest('button[value="color-picker"]')) {
+                const hex = parent.querySelector(`.background[data-id="${e.target.dataset.id}"]`).style.getPropertyValue('--hex');
+                // picker.open();
+                picker.setAttribute('data-id', e.target.dataset.id);
+                picker.setAttribute('hex', hex);
+                picker.setAttribute('open', true);
+
+                // picker.open();
+            }
+        };
+
+        picker.addEventListener('update-color', updateColor);
+        parent.addEventListener('click', openPicker);
+        // parent.addEventListener('input', updateColor);
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# NPM
+node_modules/
+
+# Tests
+/coverage
+
+# IDE
+.vscode/
+
+# Bundler
+dist/
+
+# OSX
+.DS_Store
+.LSOverride
