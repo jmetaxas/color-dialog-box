@@ -1,4 +1,10 @@
 <div align="center">
+  <a href="https://web-padawan.github.io/vanilla-colorful/">
+    <img src="https://raw.githubusercontent.com/jmetaxas/color-dialog-box/main/screenshot.png" height="240" alt="Screenshot of the color picker">
+  </a>
+</div>
+
+<div align="center">
   <a href="https://npmjs.org/package/color-dialog-box">
     <img alt="npm" src="https://badgen.net/npm/v/color-dialog-box" />
   </a>
