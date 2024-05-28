@@ -69,6 +69,7 @@ input[type=number] {
     justify-content: space-between;
 
     & h3 {
+        color: var(--txt-color-primary);
         padding: 0;
         margin: 0;
         font-weight: 700;
@@ -102,6 +103,7 @@ input[type=number] {
 }
 
 [part=hex-input] {
+    background: transparent;
     font-family: inherit;
     font-size: 1rem;
     width: 100%;
@@ -111,6 +113,7 @@ input[type=number] {
     padding: 0;
     display: flex;
     flex: 1;
+    color: var(--txt-color-primary);
 }
 
 [part=cancel], 
@@ -240,6 +243,7 @@ input[type=number] {
         width: 3.125rem;
         outline: 0;
         justify-self: right;
+        color: var(--txt-color-primary);
 
         &:hover {
             box-shadow: 0 0 0 1px var(--border-color-primary) inset;
