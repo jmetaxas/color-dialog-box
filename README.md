@@ -39,6 +39,21 @@ A simple and lightweight vanilla JS (no dependencies) color dialog box with alph
 npm install color-dialog-box --save
 ```
 
+You can also use one the following CDN:
+
+[unpkg](https://unpkg.com/color-dialog-box):
+
+```html
+<script type="module" src="https://unpkg.com/color-dialog-box"></script>
+```
+
+[ESM](https://esm.sh/color-dialog-box):
+
+```html
+<script type="module" src="https://esm.sh/color-dialog-box"></script>
+```
+
+
 ## Basic Usage
 
 ```html
@@ -91,7 +106,7 @@ Supported part names:
 
 Example (of a dark theme) :
 
-```html
+```css
 color-picker {
     --bg-primary: #212031;
     --bg-secondary: #343445;
