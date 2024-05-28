@@ -1,19 +1,15 @@
 <div align="center">
-  <a href="https://web-padawan.github.io/vanilla-colorful/">
-    <img src="https://raw.githubusercontent.com/jmetaxas/color-dialog-box/main/screenshot.png" height="240" alt="Screenshot of the color picker">
+  <a href="https://github.com/jmetaxas/color-dialog-box">
+    <img src="https://raw.githubusercontent.com/jmetaxas/color-dialog-box/main/screenshot.png" width="510" alt="Screenshot of the color dialog box">
   </a>
 </div>
 
 <div align="center">
-  <a href="https://npmjs.org/package/color-dialog-box">
-    <img alt="npm" src="https://badgen.net/npm/v/color-dialog-box" />
-  </a>
-  <a href="https://bundlephobia.com/result?p=color-dialog-box">
-    <img alt="gzip size" src="https://badgen.net/bundlephobia/minzip/color-dialog-box" />
-  </a>
-  <a href="https://npmjs.org/package/color-dialog-box">
-    <img alt="no dependencies" src="https://badgen.net/bundlephobia/dependency-count/color-dialog-box" />
-  </a>
+
+[![Version](https://badgen.net/npm/v/color-dialog-box)](https://npmjs.org/package/color-dialog-box)
+[![Size](https://badgen.net/bundlephobia/minzip/color-dialog-box)](https://bundlephobia.com/result?p=color-dialog-box)
+[![Size](https://badgen.net/bundlephobia/dependency-count/color-dialog-box)](https://npmjs.org/package/color-dialog-box)
+
 </div>
 
 <br />
@@ -112,8 +108,15 @@ color-picker::part(info) {
 }
 ```
 
+### Labels
 
+You can change the labels by using the following attributes:
 
+`label-title`, `label-hue`, `label-saturation`, `label-lightness`, `label-opacity`, `label-ok`
+
+```html
+<color-picker label-hue="H" label-saturation="S" label-lightness="L" label-opacity="A"></color-picker>
+```
 
 
 ## Project using color-dialog-box
