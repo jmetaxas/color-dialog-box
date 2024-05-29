@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/jmetaxas/color-dialog-box">
+  <a href="https://jmetaxas.github.io/color-dialog-box/">
     <img src="https://raw.githubusercontent.com/jmetaxas/color-dialog-box/main/screenshot.png" width="510" alt="Screenshot of the color dialog box">
   </a>
 </div>
@@ -77,7 +77,7 @@ You can also use one the following CDN:
 
 > **Note**
 >
-> You'll probably only want to add a single instance of `<color-picker>`, even if you need to change the color of different parts of the document. See an advanced example for more details.
+> You'll probably only want to add a single instance of `<color-picker>`, even if you need to change the color of different parts of the document. See an [advanced example](https://jmetaxas.github.io/color-dialog-box/) for more details.
 >
 
 ## Customization
