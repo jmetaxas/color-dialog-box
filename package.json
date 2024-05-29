@@ -7,6 +7,10 @@
         "url": "https://github.com/jmetaxas/color-dialog-box.git"
     },
     "author": "Jessy Metaxas",
+    "homepage": "https://jmetaxas.github.io/color-dialog-box/",
+    "bugs": {
+        "url": "https://github.com/jmetaxas/color-dialog-box/issues"
+    },
     "license": "ISC",
     "main": "dist/index.js",
     "module": "dist/index.js",
